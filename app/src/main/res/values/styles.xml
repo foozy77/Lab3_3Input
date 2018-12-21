@@ -10,7 +10,7 @@
     <style name="custom_button"
         parent="Widget.AppCompat.Button">
         <item name="android:background">
-            @drawable/button_background</item>
+            @drawable/my_button</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
     <style name="my_button_style"
