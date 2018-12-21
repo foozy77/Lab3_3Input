@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         radioGroupGender = findViewById(R.id.radioGroupGender);
         radioButtonMale = findViewById(R.id.radioButtonMale);
         radioButtonFemale = findViewById(R.id.radioButtonFemale);
+        checkBoxSmoker = findViewById(R.id.checkBoxSmoker);
         textViewPremium = findViewById(R.id.textViewPremium);
         ArrayAdapter<CharSequence> adapter =
                 ArrayAdapter.createFromResource(this, R.array.age_group, android.R.layout.simple_spinner_item);
@@ -73,10 +74,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if(gender == R.id.radioButtonMale)
             {
                 premium +=100;
-            }
-            if(checkBoxSmoker.isChecked())
-            {
-                premium +=100;
+                if(checkBoxSmoker.isChecked())
+                {
+                    premium +=100;
+                }
             }
             break;
             case 4:
@@ -84,22 +85,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if(gender == R.id.radioButtonMale)
             {
                 premium +=100;
+                if(checkBoxSmoker.isChecked())
+                {
+                    premium +=150;
+                }
             }
-            if(checkBoxSmoker.isChecked())
-            {
-                premium +=150;
-            }
+
             break;
             case 5:
             premium = 160;
             if(gender == R.id.radioButtonMale)
             {
                 premium +=50;
+                if(checkBoxSmoker.isChecked())
+                {
+                    premium +=150;
+                }
             }
-            if(checkBoxSmoker.isChecked())
-            {
-                premium +=150;
-            }
+
             break;
             case 6:
             premium = 200;
@@ -117,15 +120,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             break;
         }
 
-        textViewPremium.setText(getString(R.string.premium) + "= RM " + premium);
+        textViewPremium.setText(getString(R.string.premium) + " = RM " + premium);
 
     }
 
     public void reset (View view)
     {
-        spinnerAge.setSelection(-1); //-1 means not selected
+        spinnerAge.setSelection(0); //-1 means not selected
         radioGroupGender.clearCheck();
         checkBoxSmoker.setChecked(false);
-        textViewPremium.setText("");
+        textViewPremium.setText(getString(R.string.premium));
     }
 }
